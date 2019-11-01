@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheInternet.Tests", "TheInternet.Tests\TheInternet.Tests.csproj", "{16E6375E-CC42-45F0-9337-B4C79204F326}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheInternet", "TheInternet\TheInternet.csproj", "{55A7E298-D772-4C91-AD82-7D87CE3F2B19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16E6375E-CC42-45F0-9337-B4C79204F326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E6375E-CC42-45F0-9337-B4C79204F326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E6375E-CC42-45F0-9337-B4C79204F326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E6375E-CC42-45F0-9337-B4C79204F326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A7E298-D772-4C91-AD82-7D87CE3F2B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A7E298-D772-4C91-AD82-7D87CE3F2B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A7E298-D772-4C91-AD82-7D87CE3F2B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A7E298-D772-4C91-AD82-7D87CE3F2B19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDDE675C-4E6A-4C91-AAEE-E81570E1FE5B}
+	EndGlobalSection
+EndGlobal
