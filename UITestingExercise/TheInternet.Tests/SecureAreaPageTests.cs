@@ -9,23 +9,19 @@ using OpenQA.Selenium.Chrome;
 namespace TheInternet.Tests
 {
     [TestClass]
-    public class SecureAreaPageTests
+    public class SecureAreaPageTests : BaseWebPageTest
     {
-
-        private IWebDriver _driver;
-
         [TestInitialize]
-        public void OpenDriver()
+        public override void OpenDriver()
         {
-            _driver = new ChromeDriver();
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/");
+            base.OpenDriver();
             NavigateAndLogin();
         }
 
         private void NavigateAndLogin()
         {
-            new HomePage(_driver).ClickFormAuthenticationLink();
-            FormAuthenticationPage form = new FormAuthenticationPage(_driver);
+            new HomePage(Driver).ClickFormAuthenticationLink();
+            FormAuthenticationPage form = new FormAuthenticationPage(Driver);
 
             form.EnterUsername("tomsmith");
             form.EnterPassword("SuperSecretPassword!");
@@ -35,21 +31,21 @@ namespace TheInternet.Tests
         [TestCleanup]
         public void CloseDriver()
         {
-            _driver.Close();
+            Driver.Close();
         }
 
         [TestMethod]
         public void ShouldSeeLoginSuccessNotification()
         {
-            SecureAreaPage secure = new SecureAreaPage(_driver);
+            SecureAreaPage secure = new SecureAreaPage(Driver);
             secure.IsSuccessfulLoginNotificationDisplayed().Should().BeTrue();
         }
 
         [TestMethod]
         public void ShouldSeeLogoutSuccessDisplayed()
         {
-            FormAuthenticationPage form = new FormAuthenticationPage(_driver);
-            SecureAreaPage secure = new SecureAreaPage(_driver);
+            FormAuthenticationPage form = new FormAuthenticationPage(Driver);
+            SecureAreaPage secure = new SecureAreaPage(Driver);
             secure.LogoutButton().Click();
             form.IsLogoutSuccessNotificationDisplayed().Should().BeTrue();
         }

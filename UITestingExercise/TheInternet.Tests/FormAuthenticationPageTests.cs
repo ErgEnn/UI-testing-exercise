@@ -9,30 +9,13 @@ using OpenQA.Selenium.Chrome;
 namespace TheInternet.Tests
 {
     [TestClass]
-    public class FormAuthenticationPageTests
+    public class FormAuthenticationPageTests : BaseWebPageTest
     {
-        private IWebDriver _driver;
-
-        [TestInitialize]
-        public void OpenDriver()
-        {
-            _driver = new ChromeDriver();
-            _driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/");
-        }
-
-        [TestMethod]
-        public void ShouldBeAtHomePage()
-        {
-            HomePage homePage = new HomePage(_driver);
-
-            homePage.IsAt().Should().BeTrue();
-        }
-
         [TestMethod]
         public void ShouldLoginWithValidCredentials()
         {
-            new HomePage(_driver).ClickFormAuthenticationLink();
-            FormAuthenticationPage form = new FormAuthenticationPage(_driver);
+            new HomePage(Driver).ClickFormAuthenticationLink();
+            FormAuthenticationPage form = new FormAuthenticationPage(Driver);
 
             form.EnterUsername("tomsmith");
             form.EnterPassword("SuperSecretPassword!");
@@ -44,8 +27,8 @@ namespace TheInternet.Tests
         [TestMethod]
         public void ShouldTryLoginWithInvalidCredentials()
         {
-            new HomePage(_driver).ClickFormAuthenticationLink();
-            FormAuthenticationPage form = new FormAuthenticationPage(_driver);
+            new HomePage(Driver).ClickFormAuthenticationLink();
+            FormAuthenticationPage form = new FormAuthenticationPage(Driver);
 
             form.EnterUsername("Peeter-Eeter Termomeeter");
             form.EnterPassword("CorrectHorseBatteryStaple");
@@ -57,8 +40,8 @@ namespace TheInternet.Tests
         [TestMethod]
         public void ShouldSeeUsernameInvalidError()
         {
-            new HomePage(_driver).ClickFormAuthenticationLink();
-            FormAuthenticationPage form = new FormAuthenticationPage(_driver);
+            new HomePage(Driver).ClickFormAuthenticationLink();
+            FormAuthenticationPage form = new FormAuthenticationPage(Driver);
 
             form.ClickSubmit();
 
@@ -68,19 +51,13 @@ namespace TheInternet.Tests
         [TestMethod]
         public void ShouldSeePasswordInvalidError()
         {
-            new HomePage(_driver).ClickFormAuthenticationLink();
-            FormAuthenticationPage form = new FormAuthenticationPage(_driver);
+            new HomePage(Driver).ClickFormAuthenticationLink();
+            FormAuthenticationPage form = new FormAuthenticationPage(Driver);
 
             form.EnterUsername("tomsmith");
             form.ClickSubmit();
 
             form.IsPasswordErrorNotificationDisplayed().Should().BeTrue();
-        }
-
-        [TestCleanup]
-        public void CloseDriver()
-        {
-            _driver.Close();
         }
     }
 }
